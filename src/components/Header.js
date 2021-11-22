@@ -1,31 +1,56 @@
-import { Link } from "react-router-dom";
-//import react-icons for hamburger menu and close
-import { BiMenu } from "react-icons/bi";
-import { AiOutlineClose } from "react-icons/ai";
+import { React, useState } from "react";
+import { NavLink, Link } from "react-router-dom";
 
-const Header = (props) => {
+
+
+const Header = ({toggleBurgerMenu}) => {
+
+
   return (
     <header className="header">
-      <div className="header navBar content">
-        <Link to="/">
-          <h2 className="header content logo">
+      <nav className="nav">
+        <ul className="nav__list">
+          <Link className="nav__logo" to="/">
             Grocery App
-          </h2>
-        </Link>
+          </Link>
 
-        <nav className="header content nav">
-          <ul>
-            <li><Link to="/shop">Home</Link></li>
-            <li><Link to="/signup">Signup</Link></li>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/cart">Cart</Link></li>
-            <li><Link to="/">Log out</Link></li>
-          </ul>
-        </nav>
-        <div className="header toggle content">
-          <BiMenu />
-        </div>
-      </div>
+          <li className="nav__list__item">
+            <NavLink className="nav__link" to="/products">
+              Home
+            </NavLink>
+          </li>
+
+          <li className="nav__list__item">
+            <NavLink className="nav__link" to="/signup">
+              Signup
+            </NavLink>
+          </li>
+
+          <li className="nav__list__item">
+            <NavLink className="nav__link" to="/login">
+              Login
+            </NavLink>
+          </li>
+
+          <li className="nav__list__item">
+            <NavLink className="nav__link" to="/cart">
+              Cart
+            </NavLink>
+          </li>
+
+          <li className="nav__list__item">
+            <NavLink className="nav__link" to="/">
+              Log out
+            </NavLink>
+          </li>
+
+          <div className="nav__button" onClick={toggleBurgerMenu}>
+            <div className="nav__button__component"></div>
+            <div className="nav__button__component"></div>
+            <div className="nav__button__component"></div>
+          </div>
+        </ul>
+      </nav>
     </header>
   );
 };

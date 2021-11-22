@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import Header from "./components/Header"
+import HeaderNav from "./components/HeaderNav"
 import Main from "./components/Main"
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header backend={backend} auth={auth}/>
+      <HeaderNav backend={backend} auth={auth}/>
       <Main backend={backend} auth={auth} getAuth={getAuth}/>
     </div>
   )
