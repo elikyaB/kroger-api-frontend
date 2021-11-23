@@ -17,7 +17,7 @@ const HeaderNav =() =>{
 
     return (
         <Fragment> 
-            <Header toggleBurgerMenu={toggleBurgerMenu}/>
+            <Header toggleBurgerMenu={toggleBurgerMenu} />
             <BurgerMenu isOpen={showBurgerMenu} closeBurgerMenu={closeBurgerMenu}/>
         </Fragment>
     );

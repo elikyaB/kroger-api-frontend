@@ -1,23 +1,21 @@
 // import { get } from "mongoose";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
-
-function Image() {
-    return (
-      <img className="image" src="https://i.imgur.com/iMP6Mvz.jpeg" alt="new" />
-    );
-  }
+import Logo from "../components/Logo";
 
 const Login = (props) => {
     let navigate = useNavigate()
     
     const URL = props.backend+'/user'
-    const getUser = async (item) => {
+    const getUser = async (account) => {
         // make the post request to our API
         await fetch(URL+'/login', {
-            method: "post",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(item),
+            method: "get",
+            headers: {
+                "Content-Type": "application/json",
+                "username": account.username,
+                "password": account.password
+            }
         }).then(function(response) {
             return response.json()
         }).then(function(data) {
@@ -82,7 +80,7 @@ const Login = (props) => {
 
     return (
     <div>
-        <Image />
+        <Logo />
         {form}
     </div>
     )

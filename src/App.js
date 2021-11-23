@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import HeaderNav from "./components/HeaderNav"
+import Header from "./components/Header"
 import Main from "./components/Main"
+
 
 function App() {
   // link to backend (localhost:#### or heroku)

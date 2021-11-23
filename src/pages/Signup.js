@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
-
-function Image() {
-    return (
-      <img className="image" src="https://i.imgur.com/iMP6Mvz.jpeg" alt="new" />
-    );
-  }
+import Logo from "../components/Logo";
 
 const Signup = (props) => {
     let navigate = useNavigate()
@@ -76,7 +71,7 @@ const Signup = (props) => {
 
     return (
     <div>
-        <Image />
+        <Logo />
         {form}
     </div>
     )

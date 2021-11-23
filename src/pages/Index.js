@@ -64,7 +64,7 @@ if (props.product !== null) {
         const prepCart = () => {
           if (props.cart === null) {props.getCart()}
         }
-        const add = () => {props.addToCart(p.productId)}
+        const add = () => {props.addToCart(p.productId, "+")}
         p.addToCart = props.getCart
         return (
           <div key={p._id} className="product">

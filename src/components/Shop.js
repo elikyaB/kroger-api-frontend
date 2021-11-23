@@ -44,9 +44,11 @@ const Shop = (props) => {
     
     const getCart = async () => {
         await fetch(URL+'/cart', {
-            method: "put",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(props.auth),
+            method: "get",
+            headers: {
+                "Content-Type": "application/json",
+                "id": props.auth.id
+            },
         }).then(function(response) {
             return response.json()
         }).then(function(data) {
@@ -58,19 +60,20 @@ const Shop = (props) => {
     const updateCart = async (newCart) => {
         await fetch(URL+'/cart', {
             method: "put",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                id: props.auth.id,
-                cart: newCart
-            })
+            headers: {
+                "Content-Type": "application/json",
+                "id": props.auth.id
+            },
+            body: JSON.stringify({cart: newCart})
         }).then(function(response) {
             return response.json()
         }).then(function(data) {
             setCart(data)
-        }).then(console.log(cart))
+        })
+        .then(console.log(cart))
     }
 
-    const addToCart = async (id) => {
+    const addToCart = async (id, op) => {
         // get item data with searchProduct route
         await fetch(URL+'/products', {
             method:"post",
@@ -83,29 +86,31 @@ const Shop = (props) => {
             return item
         }).then(function(item) {
             const newCart = cart
-            if (newCart.length > 0) {
-                newCart.map((thing) => {
-                    if (thing.productId === item.productId) {
-                        thing.quantity += 1
-                        console.log(newCart)
-                        return newCart
-                    }
-                    return newCart
-                })
-                return newCart
+            // check item position in cart
+           const pos = newCart.findIndex((thing) => {
+               if (thing.productId === item.productId) {
+                   return true
+               }
+           })
+           // add new item or increment existing
+           if (pos === -1) {
+               item.quantity = 1
+               newCart.push(item)
+           } else {
+               op === "+" ? 
+               newCart[pos].quantity += 1 :
+               newCart[pos].quantity -= 1
             }
-            item.quantity = 1
-            newCart.push(item)
-            console.log(newCart)
+            
             return newCart
         }).then(function(newCart) {
             updateCart(newCart)
         })
     }
 
-    const editCart = async (id, num) => {
+    // const editCart = async (id, num) => {
         
-    }
+    // }
     
     useEffect( () => {
         if (product === null) {getProduct()}

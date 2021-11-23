@@ -10,13 +10,10 @@ const BurgerMenu = ({
 
     return(
         <Fragment>
-        {isOpen ? <div className="burgermenu__backdrop" onclick={closeBurgerMenu}></div> : <Fragment></Fragment> }
+        {isOpen ? <div className="burgermenu__backdrop" onClick={closeBurgerMenu}></div> : <Fragment></Fragment> }
 
         <nav className={`${styles}`}>
         <ul className="burgermenu__list">
-          <Link className="burgermenu__logo" to="/">
-            Grocery App
-          </Link>
 
           <li className="burgermenu__list__item" onClick={closeBurgerMenu}>
             <NavLink className="burgermenu__link" to="/products">
