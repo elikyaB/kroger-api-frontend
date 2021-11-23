@@ -101,8 +101,10 @@ const Shop = (props) => {
         }).then(function(item) {
             const newCart = cart
             // check item position in cart
-           const pos = newCart.findIndex((thing) => {
-               if (thing.productId === item.productId) {return true}
+            // if (this.productId === item.productId)
+            let pos = -1
+            newCart.forEach((i) => {
+               if (i.productId === item.productId) {pos = i}
            })
            // add new item or increment existing
            if (pos === -1) {
