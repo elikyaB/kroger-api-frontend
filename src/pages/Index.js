@@ -52,7 +52,7 @@ const Index = (props) => {
         onChange={handleChange}
       />
 
-      <input type="submit" className="form-button" value="Add Product" />
+      <input type="submit" className="form-button" value="Search" />
     </form>
   )
 
@@ -64,12 +64,12 @@ if (props.product !== null) {
         const prepCart = () => {
           if (props.cart === null) {props.getCart()}
         }
-        const add = () => {props.addToCart(p.productId, "+")}
+        const add = () => {props.editCart(p.productId, "+")}
         p.addToCart = props.getCart
         return (
           <div key={p._id} className="product">
             <div className="productcontent">
-              <Link to={`/products/${p.productId}`}>
+              <Link to={`${p.productId}`}>
                 <h1 className="index-product-name">{p.description}</h1>
               </Link>
               <img className="product" src={p.images[0].sizes[0].url} alt={"thing"}/>

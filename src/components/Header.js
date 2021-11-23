@@ -4,8 +4,7 @@ import { NavLink, Link } from "react-router-dom";
 
 
 const Header = ({toggleBurgerMenu}) => {
-
-
+  
   return (
     <header className="header">
       <nav className="nav">
@@ -15,26 +14,14 @@ const Header = ({toggleBurgerMenu}) => {
           </Link>
 
           <li className="nav__list__item">
-            <NavLink className="nav__link" to="/products">
-              Home
+            <NavLink className="nav__link" to="/shop/products">
+              Shop
             </NavLink>
           </li>
 
           <li className="nav__list__item">
-            <NavLink className="nav__link" to="/signup">
-              Signup
-            </NavLink>
-          </li>
-
-          <li className="nav__list__item">
-            <NavLink className="nav__link" to="/login">
-              Login
-            </NavLink>
-          </li>
-
-          <li className="nav__list__item">
-            <NavLink className="nav__link" to="/cart">
-              Cart
+            <NavLink className="nav__link" to="/shop/cart">
+              Checkout
             </NavLink>
           </li>
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Index from "../pages/Index";
 import Show from "../pages/Show";
+import Checkout from "../pages/Checkout";
 // import { authState } from "../atom"
 // import { useRecoilState } from "recoil"
 // import { useNavigate } from "react-router-dom"
@@ -73,7 +74,23 @@ const Shop = (props) => {
         .then(console.log(cart))
     }
 
-    const addToCart = async (id, op) => {
+    const deleteItems = async (id) => {
+        await fetch(URL+'/cart', {
+            method: "delete",
+            headers: {
+                "Content-Type": "application/json",
+                "id": props.auth.id
+            },
+            body: JSON.stringify({p_id: id})
+        }).then(function(response) {
+            return response.json()
+        }).then(function(data) {
+            setCart(data)
+        })
+        .then(console.log(cart))
+    }
+
+    const editCart = async (id, op) => {
         // get item data with searchProduct route
         await fetch(URL+'/products', {
             method:"post",
@@ -88,9 +105,7 @@ const Shop = (props) => {
             const newCart = cart
             // check item position in cart
            const pos = newCart.findIndex((thing) => {
-               if (thing.productId === item.productId) {
-                   return true
-               }
+               if (thing.productId === item.productId) {return true}
            })
            // add new item or increment existing
            if (pos === -1) {
@@ -101,16 +116,12 @@ const Shop = (props) => {
                newCart[pos].quantity += 1 :
                newCart[pos].quantity -= 1
             }
-            
+            // check if zero to delete
             return newCart
         }).then(function(newCart) {
             updateCart(newCart)
         })
     }
-
-    // const editCart = async (id, num) => {
-        
-    // }
     
     useEffect( () => {
         if (product === null) {getProduct()}
@@ -127,7 +138,7 @@ const Shop = (props) => {
                     searchProduct={searchProduct} 
                     cart={cart}
                     getCart={getCart}
-                    addToCart={addToCart}
+                    editCart={editCart}
                 />
             } />
             <Route path="/products/:id" element={
@@ -135,7 +146,16 @@ const Shop = (props) => {
                     auth={props.auth}
                     cart={cart}
                     getCart={getCart}
-                    updateCart={updateCart}
+                    editCart={editCart}
+                />
+            } />
+            <Route path="/cart" element={
+                <Checkout 
+                    auth={props.auth}
+                    cart={cart}
+                    getCart={getCart}
+                    editCart={editCart}
+                    deleteItems={deleteItems}
                 />
             } />
         </Routes>
