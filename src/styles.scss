@@ -25,6 +25,12 @@ $green: #78975e;
   background-color: $alertcolor;
 }
 
+@mixin image-default {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+}
+
 // breakpoints mixins for responsive mobile/ screen styling
 @mixin breakpoint($breakpoint) {
   @if $breakpoint == phone {
@@ -238,13 +244,13 @@ body {
 section,
 div {
   form {
-    margin-left: 10%;
+    // margin-left: 10%;
 
     input {
       @include white-text-teal-bg;
       padding: 10px;
       font-size: 1.1em;
-      margin: 10px;
+      // margin: 10px;
 
       &[type="submit"]:hover {
         @include teal-text-white-bg;
@@ -269,22 +275,205 @@ button {
 // images
 // --------------------------
 
-img {
-  width: 300px;
-  height: 300px;
-  border-radius: 90px;
-  object-fit: cover;
+img.product {
+  @include image-default;
+  border-radius: 60px;
+  border: 2px solid rgb(131, 226, 36);
 }
 
 section,
-.product {
+div.product {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   margin: 10px;
 }
 
-.productcontent {
+div.productcontent {
   text-align: center;
   margin: 10px;
+}
+
+/////////////////////
+// kerlin
+/////////////////////
+// google fonts
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Secular+One&display=swap');
+
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Nunito:wght@300&display=swap");
+
+// --------------------------
+// landing page
+// --------------------------
+.landing-button {
+  margin: auto;
+  width: min(90%, 70.5rem);
+
+  width: 200px;
+  height: 60px;
+
+  background-color: rgb(131, 226, 36);
+  border-radius: 30px;
+  color: white;
+  font-family: "Nunito", sans-serif;
+
+  text-align: center;
+
+
+  padding-top: 10px;
+
+  margin-top: 3em;
+}
+
+// --------------------------
+// auth pages
+// --------------------------
+.image {
+  border-radius: 90px;
+  object-fit: cover;
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  height: 150px;
+  width: 150px;
+  margin-top: 30px;
+}
+.auth-form {
+  margin: auto;
+  width: min(90%, 70.5rem);
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 40%;
+  border-radius: 30px;
+  background-color: white;
+  color: black;
+  margin-top: 3em;
+}
+.auth-button {
+  margin: auto;
+  width: min(90%, 70.5rem);
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 150px;
+  height: 40px;
+  background-color: rgb(131, 226, 36);
+  border-radius: 30px;
+  color: white;
+  margin-top: 3em;
+  font-family: "Nunito", sans-serif;
+  text-align: center;
+  padding-bottom: 35px;
+}
+
+
+/////////////////////
+// index
+/////////////////////
+.index-product-name {
+  color: rgb(255, 196, 0);
+  font-family: "Secular One", sans-serif;
+  font-size: 30px;
+}
+.index-price {
+  color: black;
+  font-family: "Nunito", sans-serif;
+  font-size: 25px;
+}
+.description {
+  color: black;
+  font-family: "Nunito", sans-serif;
+  font-size: 20px;
+}
+/////////////////////
+// index form
+/////////////////////
+.form {
+  margin: auto;
+  width: min(90%, 70.5rem);
+  width: 170px;
+  height: 35px;
+  margin: 10px;
+  border-radius: 30px;
+  background-color: white;
+  color: black;
+  margin-top: 1em;
+}
+.form-button {
+  margin: auto;
+  width: min(90%, 70.5rem);
+  margin-left: 1%;
+  width: 150px;
+  height: 40px;
+  background-color: rgb(131, 226, 36);
+  border-radius: 30px;
+  color: white;
+  margin-top: 1em;
+  font-family: "Nunito", sans-serif;
+  padding-bottom: 35px;
+}
+/////////////////////
+// show
+/////////////////////
+.show-name {
+  font-family: "Nunito", sans-serif;
+  font-size: 50px;
+}
+.product-price {
+  font-family: "Nunito", sans-serif;
+  font-size: 40px;
+}
+.department {
+  font-family: "Nunito", sans-serif;
+  font-size: 30px;
+}
+.aisle {
+  font-family: "Nunito", sans-serif;
+  font-size: 30px;
+}
+.location {
+  font-family: "Nunito", sans-serif;
+  font-size: 30px;
+}
+
+/////////////////////
+// show form
+/////////////////////
+.show-form {
+  margin: auto;
+  width: min(90%, 70.5rem);
+  width: 280px;
+  height: 35px;
+  margin: 1%;
+  border-radius: 30px;
+  background-color: white;
+  color: black;
+  //margin-top: 2em;
+}
+.show-button {
+  margin: auto;
+  width: min(90%, 70.5rem);
+  margin-left: 9%;
+  width: 150px;
+  height: 45px;
+  background-color: rgb(131, 226, 36);
+  border-radius: 30px;
+  color: white;
+  margin-top: 1em;
+  font-family: "Nunito", sans-serif;
+  padding-top: 8px;
+}
+.delete-button {
+  margin: auto;
+  width: min(90%, 70.5rem);
+  margin-left: 9%;
+  width: 150px;
+  height: 40px;
+  background-color: rgb(131, 226, 36);
+  border-radius: 30px;
+  color: white;
+  margin-top: 1em;
+  font-family: "Nunito", sans-serif;
+  font-size: 17.5px;
+  padding-top: 2px;
 }

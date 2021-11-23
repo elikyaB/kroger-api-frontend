@@ -36,6 +36,7 @@ const Index = (props) => {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
+        className="form"
         value={newForm.department}
         name="department"
         placeholder="department"
@@ -44,13 +45,14 @@ const Index = (props) => {
       
       <input
         type="text"
+        className="form"
         value={newForm.name}
         name="name"
         placeholder="name"
         onChange={handleChange}
       />
 
-      <input type="submit" value="Add Product" />
+      <input type="submit" className="form-button" value="Add Product" />
     </form>
   )
 
@@ -68,11 +70,11 @@ if (props.product !== null) {
           <div key={p._id} className="product">
             <div className="productcontent">
               <Link to={`/products/${p.productId}`}>
-                <h1>{p.description}</h1>
+                <h1 className="index-product-name">{p.description}</h1>
               </Link>
               <img src={p.images[0].sizes[0].url} alt={"thing"}/>
-              <h3>${p.items[0].price.regular}</h3>
-              <button onMouseOver={prepCart} onClick={add}>Add to Cart</button>
+              <h3 className="index-price">${p.items[0].price.regular}</h3>
+              <button onMouseOver={prepCart} className="form-button" onClick={add}>Add to Cart</button>
             </div>
           </div>
         )

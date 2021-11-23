@@ -8,8 +8,8 @@ const Landing = (props) => {
     useEffect(() => {if (props.auth !== null) {navigate('/shop')}})
     return (
         <div>
-            <button onClick={toSignup}>Signup</button>
-            <button onClick={toLogin}>Login</button>
+            <button className="landing-button" onClick={toSignup}>Signup</button>
+            <button className="landing-button" onClick={toLogin}>Login</button>
         </div>
     )
     

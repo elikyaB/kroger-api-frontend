@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 
+function Image() {
+    return (
+      <img className="image" src="https://i.imgur.com/iMP6Mvz.jpeg" alt="new" />
+    );
+  }
 
 const Signup = (props) => {
     let navigate = useNavigate()
@@ -50,6 +55,7 @@ const Signup = (props) => {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
+            className="auth-form"
             value={newForm.username}
             name="username"
             placeholder="username"
@@ -58,17 +64,19 @@ const Signup = (props) => {
          
           <input
             type="password"
+            className="auth-form"
             value={newForm.password}
             name="password"
             placeholder="password"
             onChange={handleChange}
           />
-          <input type="submit" value="Signup" />
+          <input type="submit" className="auth-button" value="Signup" />
         </form>
       );
 
     return (
     <div>
+        <Image />
         {form}
     </div>
     )

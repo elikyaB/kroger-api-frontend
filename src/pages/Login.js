@@ -2,6 +2,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 
+function Image() {
+    return (
+      <img className="image" src="https://i.imgur.com/iMP6Mvz.jpeg" alt="new" />
+    );
+  }
+
 const Login = (props) => {
     let navigate = useNavigate()
     
@@ -55,6 +61,7 @@ const Login = (props) => {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
+            className="auth-form"
             value={newForm.username}
             name="username"
             placeholder="username"
@@ -63,17 +70,19 @@ const Login = (props) => {
          
           <input
             type="password"
+            className="auth-form"
             value={newForm.password}
             name="password"
             placeholder="password"
             onChange={handleChange}
           />
-          <input type="submit" value="Login" />
+          <input type="submit" className="auth-button" value="Login" />
         </form>
       );
 
     return (
     <div>
+        <Image />
         {form}
     </div>
     )

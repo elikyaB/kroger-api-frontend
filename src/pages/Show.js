@@ -52,6 +52,7 @@ const navigate = useNavigate()
       <form onSubmit={handleSubmit}>
         <input
           type="text"
+          className="show-form"
           value={editForm.name}
           name="name"
           placeholder="name"
@@ -95,15 +96,15 @@ const navigate = useNavigate()
     return (
       <div className="products">
         <div className="productcontent">
-        <h1>{products.name}</h1>
-        <img src={products.image} alt={products.name} />
-        <h2>{products.price}</h2>
-        <h4>Department: {products.department}</h4>
-        <h4>aisle: {products.aisle}</h4>
-        <h4>location: {products.location}</h4>
+        <h1 className="show-name">{products.name}</h1>
+        <img src={products.image} alt={products.name} className="image" />
+        <h2 className="product-price">{products.price}</h2>
+        <h4 className="department">Department: {products.department}</h4>
+        <h4 className="aisle">aisle: {products.aisle}</h4>
+        <h4 className="location">location: {products.location}</h4>
         </div>
         {form}
-        <button onClick={removeProduct}>DELETE PRODUCT</button>
+        <button className="delete-button" onClick={removeProduct}>DELETE PRODUCT</button>
       </div>
     );
   } else {
