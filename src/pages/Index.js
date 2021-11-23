@@ -72,7 +72,7 @@ if (props.product !== null) {
               <Link to={`/products/${p.productId}`}>
                 <h1 className="index-product-name">{p.description}</h1>
               </Link>
-              <img src={p.images[0].sizes[0].url} alt={"thing"}/>
+              <img className="product" src={p.images[0].sizes[0].url} alt={"thing"}/>
               <h3 className="index-price">${p.items[0].price.regular}</h3>
               <button onMouseOver={prepCart} className="form-button" onClick={add}>Add to Cart</button>
             </div>
