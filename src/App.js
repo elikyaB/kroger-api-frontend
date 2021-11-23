@@ -1,14 +1,11 @@
-import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useState } from "react"
 import HeaderNav from "./components/HeaderNav"
-import Header from "./components/Header"
 import Main from "./components/Main"
 
 
 function App() {
   // link to backend (localhost:#### or heroku)
   const backend = "http://localhost:3001"
-  let navigate = useNavigate()
 
   const [auth, setAuth] = useState(null)
   console.log(auth)

@@ -13,10 +13,11 @@ const Shop = (props) => {
     const [product, setProduct] = useState(null);
 
     // function to get all products
-    const getProduct = async () => {
+    const getProduct = async (search={}) => {
         // make the api call
         await fetch(URL+'/products', {
-            method: "get"
+            method: "get",
+            headers: search,
         }).then(function(response) {
             return response.json()
         }).then(function(data) {
@@ -25,21 +26,17 @@ const Shop = (props) => {
         })
     }
 
-    // function to filter products
-    const searchProduct = async (item) => {
-        // make the post request to our API
-        await fetch(URL+'/products', {
-            method: "post",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(item)
+    const showProduct = async (id) => {
+        await fetch(props.backend+'/shop/products', {
+        method: "get",
+        headers: {"productId": id}
         }).then(function(response) {
-            return response.json()
-        }).then(function(search) {
-            // update state for list of products
-            setProduct(search);
+          return response
         })
-        
-    };
+        // .then(function(data) {
+        //   return data
+        // })
+      }
 
     const [cart, setCart] = useState(null)
     
@@ -49,7 +46,7 @@ const Shop = (props) => {
             headers: {
                 "Content-Type": "application/json",
                 "id": props.auth.id
-            },
+            }
         }).then(function(response) {
             return response.json()
         }).then(function(data) {
@@ -125,7 +122,7 @@ const Shop = (props) => {
     
     useEffect( () => {
         if (product === null) {getProduct()}
-    }, [])
+    })
 
     return (
     <div>
@@ -135,7 +132,6 @@ const Shop = (props) => {
                     auth={props.auth}
                     product={product} 
                     getProduct={getProduct} 
-                    searchProduct={searchProduct} 
                     cart={cart}
                     getCart={getCart}
                     editCart={editCart}
@@ -144,9 +140,13 @@ const Shop = (props) => {
             <Route path="/products/:id" element={
                 <Show 
                     auth={props.auth}
+                    backend={props.backend}
+                    product={product}
+                    getProduct={getProduct}
                     cart={cart}
                     getCart={getCart}
                     editCart={editCart}
+                    showProduct={showProduct}
                 />
             } />
             <Route path="/cart" element={

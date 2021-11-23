@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Link } from "react-router-dom"
 
 const Index = (props) => {
@@ -55,6 +55,17 @@ const Index = (props) => {
       <input type="submit" className="form-button" value="Search" />
     </form>
   )
+
+  // const display = async (id) => {
+  //   await fetch(props.backend+'/shop/products', {
+  //   method: "get",
+  //   headers: {"productId": id}
+  //   }).then(function(response) {
+  //     return response.json()
+  //   }).then(function(data) {
+  //     return data
+  //   })
+  // }
 
 if (props.product !== null) {
   return (
