@@ -5,7 +5,7 @@ import Main from "./components/Main"
 
 function App() {
   // link to backend (localhost:#### or heroku)
-  const backend = "https://kweb-project3.herokuapp.com/"
+  const backend = "https://kweb-project3.herokuapp.com"
 
   const [auth, setAuth] = useState(null)
   console.log(auth)
